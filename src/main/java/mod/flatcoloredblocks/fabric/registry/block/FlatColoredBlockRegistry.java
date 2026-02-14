@@ -2,6 +2,7 @@ package mod.flatcoloredblocks.fabric.registry.block;
 
 import mod.flatcoloredblocks.fabric.FlatColoredBlocks;
 import mod.flatcoloredblocks.fabric.registry.block.type.*;
+import mod.flatcoloredblocks.fabric.registry.block.type.util.enums.ColoredBlockType;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -18,13 +19,13 @@ import java.util.function.Function;
 public class FlatColoredBlockRegistry {
     public static final Block COLORED_CONCRETE = register(
             "colored_concrete",
-            ColoredConcreteBlock::new,
-            BlockBehaviour.Properties.of(),
+            props -> new ColoredGlassBlock(props, ColoredBlockType.CONCRETE),
+            BlockBehaviour.Properties.of().isViewBlocking(Blocks::never),
             true
     );
     public static final Block COLORED_GLASS = register(
             "colored_glass",
-            ColoredGlassBlock::new,
+            props -> new ColoredGlassBlock(props, ColoredBlockType.GLASS),
             BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS),
             true
     );
