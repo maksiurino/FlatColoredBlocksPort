@@ -7,7 +7,6 @@ import net.minecraft.world.item.ItemStack;
 
 public class FlatColoredBlocksUtil {
     public static final Color WHITE = new Color();
-    public static final Color DEFAULT = WHITE;
 
     public static final Color RED = new Color(255, 0, 0);
     public static final Color GREEN = new Color(0, 255, 0);
