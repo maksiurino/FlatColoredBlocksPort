@@ -20,7 +20,6 @@ import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.network.chat.Component;
 
 public class FlatColoredBlocksClient implements ClientModInitializer {
-
     private void initializeBlocks() {
         // Glass transparency
         BlockRenderLayerMap.putBlock(FlatColoredBlockRegistry.COLORED_GLASS, ChunkSectionLayer.TRANSLUCENT);
@@ -34,7 +33,7 @@ public class FlatColoredBlocksClient implements ClientModInitializer {
                 }
             }
             return 0xFFFFFF;
-        }, FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS);
+        }, FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS, FlatColoredBlockRegistry.COLORED_WOOL);
         // Block Entity Renderer
         BlockEntityRenderers.register(FlatColoredBlocksBlockEntities.COLORED_CONCRETE_BLOCK_ENTITY, ColoredConcreteBlockEntityRenderer::new);
     }

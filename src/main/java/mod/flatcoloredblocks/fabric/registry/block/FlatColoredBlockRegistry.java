@@ -21,13 +21,19 @@ public class FlatColoredBlockRegistry {
     public static final Block COLORED_CONCRETE = registerColorable(
             "colored_concrete",
             props -> new ColoredGlassBlock(props, ColoredBlockType.CONCRETE),
-            BlockBehaviour.Properties.of().isViewBlocking(Blocks::never),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_CONCRETE).isViewBlocking(Blocks::never),
             true
     );
     public static final Block COLORED_GLASS = registerColorable(
             "colored_glass",
             props -> new ColoredGlassBlock(props, ColoredBlockType.GLASS),
             BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS),
+            true
+    );
+    public static final Block COLORED_WOOL = registerColorable(
+            "colored_wool",
+            props -> new ColoredGlassBlock(props, ColoredBlockType.WOOL),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL).isViewBlocking(Blocks::never),
             true
     );
 

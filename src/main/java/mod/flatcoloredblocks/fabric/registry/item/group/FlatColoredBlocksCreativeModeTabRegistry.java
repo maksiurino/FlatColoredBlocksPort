@@ -83,6 +83,7 @@ public class FlatColoredBlocksCreativeModeTabRegistry {
                         .displayItems((params, output) -> {
                             addRowOfColorsForItemGroup(FlatColoredBlockRegistry.COLORED_CONCRETE, output);
                             addRowOfColorsForItemGroup(FlatColoredBlockRegistry.COLORED_GLASS, output);
+                            addRowOfColorsForItemGroup(FlatColoredBlockRegistry.COLORED_WOOL, output);
                         })
                         .build()
         );

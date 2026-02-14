@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -38,6 +39,9 @@ public class ColoredGlassBlock extends TransparentBlock implements EntityBlock {
             }
             if (type == ColoredBlockType.GLASS) {
                 itemStack = new ItemStack(FlatColoredBlockRegistry.COLORED_GLASS);
+            }
+            if (type == ColoredBlockType.WOOL) {
+                itemStack = new ItemStack(FlatColoredBlockRegistry.COLORED_WOOL);
             }
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, be.getColor().getColorAsRgb());
             return itemStack;

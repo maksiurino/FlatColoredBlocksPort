@@ -18,6 +18,10 @@ public class FlatColoredBlocksItemTagProvider extends FabricTagProvider.ItemTagP
     @Override
     protected void addTags(HolderLookup.@NonNull Provider wrapperLookup) {
         valueLookupBuilder(FlatColoredBlocksItemTags.COLORED_BLOCKS)
-                .add(FlatColoredBlockRegistry.COLORED_CONCRETE.asItem(), FlatColoredBlockRegistry.COLORED_GLASS.asItem());
+                .add(
+                        FlatColoredBlockRegistry.COLORED_CONCRETE.asItem(),
+                        FlatColoredBlockRegistry.COLORED_GLASS.asItem(),
+                        FlatColoredBlockRegistry.COLORED_WOOL.asItem()
+                );
     }
 }
