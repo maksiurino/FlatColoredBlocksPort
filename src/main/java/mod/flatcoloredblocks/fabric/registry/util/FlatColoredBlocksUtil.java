@@ -24,21 +24,22 @@ public class FlatColoredBlocksUtil {
     }
 
     public static MutableComponent getColorName(ItemStack itemStack) {
-        Color color = new Color();
-        if (itemStack.has(FlatColoredBlocksComponents.COLOR_COMPONENT)) {
-            color = new Color(itemStack.get(FlatColoredBlocksComponents.COLOR_COMPONENT));
+        Integer color = itemStack.get(FlatColoredBlocksComponents.COLOR_COMPONENT);
+        Color mainColor = new Color();
+        if (color != null) {
+            mainColor = new Color(color);
         }
         MutableComponent component = Component.translatable("color.flatcoloredblocks.__default__prefixed");
-        if (color.equals(WHITE)) {
+        if (mainColor.equals(WHITE)) {
             component = Component.translatable("color.flatcoloredblocks.white");
         }
-        if (color.equals(RED)) {
+        if (mainColor.equals(RED)) {
             component = Component.translatable("color.flatcoloredblocks.red");
         }
-        if (color.equals(GREEN)) {
+        if (mainColor.equals(GREEN)) {
             component = Component.translatable("color.flatcoloredblocks.green");
         }
-        if (color.equals(BLUE)) {
+        if (mainColor.equals(BLUE)) {
             component = Component.translatable("color.flatcoloredblocks.blue");
         }
         return component;
