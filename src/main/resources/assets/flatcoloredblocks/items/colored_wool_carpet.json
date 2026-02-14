@@ -1,7 +1,7 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "flatcoloredblocks:block/colored_carpet",
+    "model": "flatcoloredblocks:block/colored_wool_carpet",
     "tints": [
       {
         "type": "flatcoloredblocks:color",
