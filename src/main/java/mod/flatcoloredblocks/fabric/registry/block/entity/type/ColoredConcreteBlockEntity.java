@@ -33,7 +33,7 @@ public class ColoredConcreteBlockEntity extends BlockEntity {
                     worldPosition,
                     getBlockState(),
                     getBlockState(),
-                    Block.UPDATE_CLIENTS
+                    Block.UPDATE_ALL
             );
         }
     }
