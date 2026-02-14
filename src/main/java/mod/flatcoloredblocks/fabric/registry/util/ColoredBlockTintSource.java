@@ -11,6 +11,8 @@ import net.minecraft.world.item.ItemStack;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Objects;
+
 public record ColoredBlockTintSource(int color) implements ItemTintSource {
     public static final MapCodec<ColoredBlockTintSource> MAP_CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
@@ -23,10 +25,8 @@ public record ColoredBlockTintSource(int color) implements ItemTintSource {
 
     @Override
     public int calculate(ItemStack itemStack, @Nullable ClientLevel clientLevel, @Nullable LivingEntity livingEntity) {
-        if (itemStack.has(FlatColoredBlocksComponents.COLOR_COMPONENT)) {
-            return ARGB.opaque(itemStack.get(FlatColoredBlocksComponents.COLOR_COMPONENT));
-        }
-        return ARGB.opaque(0xFFFFFF);
+        Integer color = itemStack.get(FlatColoredBlocksComponents.COLOR_COMPONENT);
+        return ARGB.opaque(Objects.requireNonNullElse(color, 0xFFFFFF));
     }
 
     @Override
