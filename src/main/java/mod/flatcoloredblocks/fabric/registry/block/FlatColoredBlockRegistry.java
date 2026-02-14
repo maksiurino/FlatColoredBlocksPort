@@ -36,6 +36,12 @@ public class FlatColoredBlockRegistry {
             BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL).isViewBlocking(Blocks::never),
             true
     );
+    public static final Block COLORED_CARPET = registerColorable(
+            "colored_carpet",
+            props -> new ColoredGlassBlock(props, ColoredBlockType.CARPET),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_CARPET).isViewBlocking(Blocks::never),
+            true
+    );
 
     private static Block registerColorable(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings, boolean shouldRegisterItem) {
         ResourceKey<Block> blockKey = keyOfBlock(name);

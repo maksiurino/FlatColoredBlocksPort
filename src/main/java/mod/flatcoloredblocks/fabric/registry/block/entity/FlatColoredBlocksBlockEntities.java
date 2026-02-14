@@ -15,7 +15,7 @@ public class FlatColoredBlocksBlockEntities {
     public static final BlockEntityType<ColoredConcreteBlockEntity> COLORED_CONCRETE_BLOCK_ENTITY =
             register("colored_concrete", ColoredConcreteBlockEntity::new,
                     FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS,
-                    FlatColoredBlockRegistry.COLORED_WOOL
+                    FlatColoredBlockRegistry.COLORED_WOOL, FlatColoredBlockRegistry.COLORED_CARPET
             );
 
     private static <T extends BlockEntity> BlockEntityType<T> register(

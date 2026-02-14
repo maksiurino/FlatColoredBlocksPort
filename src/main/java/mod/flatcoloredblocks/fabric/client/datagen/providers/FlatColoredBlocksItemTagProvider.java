@@ -21,7 +21,8 @@ public class FlatColoredBlocksItemTagProvider extends FabricTagProvider.ItemTagP
                 .add(
                         FlatColoredBlockRegistry.COLORED_CONCRETE.asItem(),
                         FlatColoredBlockRegistry.COLORED_GLASS.asItem(),
-                        FlatColoredBlockRegistry.COLORED_WOOL.asItem()
+                        FlatColoredBlockRegistry.COLORED_WOOL.asItem(),
+                        FlatColoredBlockRegistry.COLORED_CARPET.asItem()
                 );
     }
 }

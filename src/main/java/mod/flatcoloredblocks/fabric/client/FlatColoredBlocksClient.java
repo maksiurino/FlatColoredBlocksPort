@@ -33,7 +33,9 @@ public class FlatColoredBlocksClient implements ClientModInitializer {
                 }
             }
             return 0xFFFFFF;
-        }, FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS, FlatColoredBlockRegistry.COLORED_WOOL);
+        },
+                FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS,
+                FlatColoredBlockRegistry.COLORED_WOOL, FlatColoredBlockRegistry.COLORED_CARPET);
         // Block Entity Renderer
         BlockEntityRenderers.register(FlatColoredBlocksBlockEntities.COLORED_CONCRETE_BLOCK_ENTITY, ColoredConcreteBlockEntityRenderer::new);
     }

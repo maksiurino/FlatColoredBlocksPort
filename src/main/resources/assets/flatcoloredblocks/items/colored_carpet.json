@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "flatcoloredblocks:block/colored_carpet",
+    "tints": [
+      {
+        "type": "flatcoloredblocks:color",
+        "color": -1
+      }
+    ]
+  }
+}
