@@ -3,6 +3,7 @@ package mod.flatcoloredblocks.fabric.registry.block;
 import mod.flatcoloredblocks.fabric.FlatColoredBlocks;
 import mod.flatcoloredblocks.fabric.registry.block.type.*;
 import mod.flatcoloredblocks.fabric.registry.block.type.util.enums.ColoredBlockType;
+import mod.flatcoloredblocks.fabric.registry.item.type.ColoredBlockItem;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -17,18 +18,31 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Function;
 
 public class FlatColoredBlockRegistry {
-    public static final Block COLORED_CONCRETE = register(
+    public static final Block COLORED_CONCRETE = registerColorable(
             "colored_concrete",
             props -> new ColoredGlassBlock(props, ColoredBlockType.CONCRETE),
             BlockBehaviour.Properties.of().isViewBlocking(Blocks::never),
             true
     );
-    public static final Block COLORED_GLASS = register(
+    public static final Block COLORED_GLASS = registerColorable(
             "colored_glass",
             props -> new ColoredGlassBlock(props, ColoredBlockType.GLASS),
             BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS),
             true
     );
+
+    private static Block registerColorable(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings, boolean shouldRegisterItem) {
+        ResourceKey<Block> blockKey = keyOfBlock(name);
+        Block block = blockFactory.apply(settings.setId(blockKey));
+
+        if (shouldRegisterItem) {
+            ResourceKey<Item> itemKey = keyOfItem(name);
+            ColoredBlockItem blockItem = new ColoredBlockItem(block, new Item.Properties().setId(itemKey).useBlockDescriptionPrefix());
+            Registry.register(BuiltInRegistries.ITEM, itemKey, blockItem);
+        }
+
+        return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
+    }
 
     private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings, boolean shouldRegisterItem) {
         ResourceKey<Block> blockKey = keyOfBlock(name);

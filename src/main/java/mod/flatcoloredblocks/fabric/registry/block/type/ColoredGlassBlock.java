@@ -33,9 +33,11 @@ public class ColoredGlassBlock extends TransparentBlock implements EntityBlock {
     protected @NonNull ItemStack getCloneItemStack(@NonNull LevelReader level, @NonNull BlockPos blockPos, @NonNull BlockState blockState, boolean includeData) {
         if (level.getBlockEntity(blockPos) instanceof ColoredConcreteBlockEntity be) {
             ItemStack itemStack = ItemStack.EMPTY;
-            switch (type) {
-                case CONCRETE: itemStack = new ItemStack(FlatColoredBlockRegistry.COLORED_CONCRETE);
-                case GLASS: itemStack = new ItemStack(FlatColoredBlockRegistry.COLORED_GLASS);
+            if (type == ColoredBlockType.CONCRETE) {
+                itemStack = new ItemStack(FlatColoredBlockRegistry.COLORED_CONCRETE);
+            }
+            if (type == ColoredBlockType.GLASS) {
+                itemStack = new ItemStack(FlatColoredBlockRegistry.COLORED_GLASS);
             }
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, be.getColor().getColorAsRgb());
             return itemStack;
