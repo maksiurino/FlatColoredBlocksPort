@@ -2,6 +2,8 @@ package mod.flatcoloredblocks.fabric.client;
 
 import mod.flatcoloredblocks.fabric.FlatColoredBlocks;
 import mod.flatcoloredblocks.fabric.registry.block.FlatColoredBlockRegistry;
+import mod.flatcoloredblocks.fabric.registry.block.entity.FlatColoredBlocksBlockEntities;
+import mod.flatcoloredblocks.fabric.registry.block.entity.renderer.type.ColoredConcreteBlockEntityRenderer;
 import mod.flatcoloredblocks.fabric.registry.block.entity.type.ColoredConcreteBlockEntity;
 import mod.flatcoloredblocks.fabric.registry.util.ColoredBlockTintSource;
 import mod.flatcoloredblocks.fabric.registry.util.FlatColoredBlocksComponents;
@@ -13,6 +15,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.color.item.ItemTintSources;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.network.chat.Component;
 
@@ -32,6 +35,8 @@ public class FlatColoredBlocksClient implements ClientModInitializer {
             }
             return 0xFFFFFF;
         }, FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS);
+        // Block Entity Renderer
+        BlockEntityRenderers.register(FlatColoredBlocksBlockEntities.COLORED_CONCRETE_BLOCK_ENTITY, ColoredConcreteBlockEntityRenderer::new);
     }
 
     private void initializeItems() {
