@@ -1,0 +1,7 @@
+{
+  "parent": "flatcoloredblocks:block/colored_block",
+  "textures": {
+    "all": "block/white_stained_glass",
+    "particle": "block/black_stained_glass"
+  }
+}

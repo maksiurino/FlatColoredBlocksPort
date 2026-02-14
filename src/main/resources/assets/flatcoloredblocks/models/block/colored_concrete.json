@@ -1,0 +1,7 @@
+{
+  "parent": "flatcoloredblocks:block/colored_block",
+  "textures": {
+    "all": "block/white_concrete",
+    "particle": "block/black_concrete"
+  }
+}

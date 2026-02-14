@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "flatcoloredblocks",
+  "version": "${version}",
+  "name": "flatcoloredblocks",
+  "description": "Port of the Flat Colored Blocks mod for Fabric 1.21.11",
+  "authors": [
+    "Max Rhino"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "mod.flatcoloredblocks.fabric.FlatColoredBlocks"
+    ],
+    "client": [
+      "mod.flatcoloredblocks.fabric.client.FlatColoredBlocksClient"
+    ],
+    "fabric-datagen": [
+      "mod.flatcoloredblocks.fabric.client.datagen.FlatColoredBlocksDataGenerator"
+    ],
+    "modmenu": [
+      "mod.flatcoloredblocks.fabric.compat.modmenu.FlatColoredBlocksModMenuCompat"
+    ],
+    "jade": [
+      "mod.flatcoloredblocks.fabric.compat.jade.FlatColoredBlocksJadePlugin"
+    ]
+  },
+  "mixins": [
+    "flatcoloredblocks.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "custom": {
+    "modmenu": {
+
+    }
+  }
+}
