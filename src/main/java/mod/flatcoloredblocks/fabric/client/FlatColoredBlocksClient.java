@@ -21,8 +21,7 @@ import net.minecraft.network.chat.Component;
 
 public class FlatColoredBlocksClient implements ClientModInitializer {
 
-    @Override
-    public void onInitializeClient() {
+    private void initializeBlocks() {
         // Glass transparency
         BlockRenderLayerMap.putBlock(FlatColoredBlockRegistry.COLORED_GLASS, ChunkSectionLayer.TRANSLUCENT);
         // Colored blocks coloring
@@ -34,10 +33,13 @@ public class FlatColoredBlocksClient implements ClientModInitializer {
                     return color.getColorAsRgb();
                 }
             }
-            return 0x000000;
-            }, FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS);
+            return 0xFFFFFF;
+        }, FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS);
         // Block Entity Renderer
         BlockEntityRenderers.register(FlatColoredBlocksBlockEntities.COLORED_CONCRETE_BLOCK_ENTITY, ColoredConcreteBlockEntityRenderer::new);
+    }
+
+    private void initializeItems() {
         // Item Tint
         ItemTintSources.ID_MAPPER.put(FlatColoredBlocks.id("color"), ColoredBlockTintSource.MAP_CODEC);
         // Item Tooltip
@@ -51,5 +53,11 @@ public class FlatColoredBlocksClient implements ClientModInitializer {
             lines.add(Component.translatable("item.flatcoloredblocks.tooltip.color.green", mainColor.green()).withStyle(ChatFormatting.GREEN));
             lines.add(Component.translatable("item.flatcoloredblocks.tooltip.color.blue", mainColor.blue()).withStyle(ChatFormatting.BLUE));
         }));
+    }
+
+    @Override
+    public void onInitializeClient() {
+        initializeBlocks();
+        initializeItems();
     }
 }
