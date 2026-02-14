@@ -23,19 +23,24 @@ public class FlatColoredBlocksClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        // Glass transparency
         BlockRenderLayerMap.putBlock(FlatColoredBlockRegistry.COLORED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        // Colored blocks coloring
         ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> {
             if ((blockAndTintGetter != null) && (blockPos != null)) {
                 if (blockAndTintGetter.getBlockEntity(blockPos) instanceof ColoredConcreteBlockEntity be) {
                     FlatColoredBlocksUtil.Color color = be.getColor();
-                    // FIXME: Fix, so when placing the block with /setblock command, you wouldn't require to rejoin the world, to get the correct color.
+                    // FIXME: Fix, so when replacing the block with /setblock command, you wouldn't require to update the block in a way, to get the correct color.
                     return color.getColorAsRgb();
                 }
             }
             return 0x000000;
             }, FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS);
+        // Block Entity Renderer
         BlockEntityRenderers.register(FlatColoredBlocksBlockEntities.COLORED_CONCRETE_BLOCK_ENTITY, ColoredConcreteBlockEntityRenderer::new);
+        // Item Tint
         ItemTintSources.ID_MAPPER.put(FlatColoredBlocks.id("color"), ColoredBlockTintSource.MAP_CODEC);
+        // Item Tooltip
         ItemTooltipCallback.EVENT.register(((stack, context, type, lines) -> {
             Integer color = stack.get(FlatColoredBlocksComponents.COLOR_COMPONENT);
             if ((!stack.is(FlatColoredBlocksItemTags.COLORED_BLOCKS)) && color == null) return;
