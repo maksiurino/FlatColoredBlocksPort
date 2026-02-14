@@ -1,6 +1,9 @@
 package mod.flatcoloredblocks.fabric.registry.util;
 
 import net.minecraft.core.Vec3i;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.item.ItemStack;
 
 public class FlatColoredBlocksUtil {
     public static final Color WHITE = new Color();
@@ -18,6 +21,27 @@ public class FlatColoredBlocksUtil {
     public static Vec3i rgbToVector(int red, int green, int blue) {
         Color color = new Color(red, green, blue);
         return color.getColorAsVector();
+    }
+
+    public static MutableComponent getColorName(ItemStack itemStack) {
+        Color color = new Color();
+        if (itemStack.has(FlatColoredBlocksComponents.COLOR_COMPONENT)) {
+            color = new Color(itemStack.get(FlatColoredBlocksComponents.COLOR_COMPONENT));
+        }
+        MutableComponent component = Component.translatable("color.flatcoloredblocks.__default__prefixed");
+        if (color.equals(WHITE)) {
+            component = Component.translatable("color.flatcoloredblocks.white");
+        }
+        if (color.equals(RED)) {
+            component = Component.translatable("color.flatcoloredblocks.red");
+        }
+        if (color.equals(GREEN)) {
+            component = Component.translatable("color.flatcoloredblocks.green");
+        }
+        if (color.equals(BLUE)) {
+            component = Component.translatable("color.flatcoloredblocks.blue");
+        }
+        return component;
     }
 
     public static Color colorToRgb(int rgb) {
@@ -46,6 +70,30 @@ public class FlatColoredBlocksUtil {
             rgb = (rgb << 8) + green;
             rgb = (rgb << 8) + blue;
             return rgb;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof Color color) {
+                return is(color);
+            }
+            return false;
+        }
+
+        public boolean isRedSame(Color color) {
+            return color.red == red;
+        }
+
+        public boolean isGreenSame(Color color) {
+            return color.green == green;
+        }
+
+        public boolean isBlueSame(Color color) {
+            return color.blue == blue;
+        }
+
+        public boolean is(Color color) {
+            return isRedSame(color) && isGreenSame(color) && isBlueSame(color);
         }
     }
 }

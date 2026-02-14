@@ -2,7 +2,9 @@ package mod.flatcoloredblocks.fabric.registry.item.type;
 
 import mod.flatcoloredblocks.fabric.registry.block.entity.type.ColoredConcreteBlockEntity;
 import mod.flatcoloredblocks.fabric.registry.util.FlatColoredBlocksComponents;
+import mod.flatcoloredblocks.fabric.registry.util.FlatColoredBlocksUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -32,5 +34,10 @@ public class ColoredBlockItem extends BlockItem {
             }
         }
         return placed;
+    }
+
+    @Override
+    public Component getName(ItemStack itemStack) {
+        return FlatColoredBlocksUtil.getColorName(itemStack).append(" ").append(super.getName(itemStack));
     }
 }
