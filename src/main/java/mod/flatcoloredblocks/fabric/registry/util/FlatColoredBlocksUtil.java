@@ -58,7 +58,7 @@ public class FlatColoredBlocksUtil {
         }
 
         public Color() {
-            this(255, 255, 255);
+            this(new Vec3i(255, 255, 255));
         }
 
         public Vec3i getColorAsVector() {
