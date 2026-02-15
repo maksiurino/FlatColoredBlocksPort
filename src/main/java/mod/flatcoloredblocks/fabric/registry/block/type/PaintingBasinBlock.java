@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -24,6 +25,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class PaintingBasinBlock extends Block implements EntityBlock {
@@ -70,6 +72,16 @@ public class PaintingBasinBlock extends Block implements EntityBlock {
                 be.setFluid(FlatColoredBlocksUtil.getFluidFromBucket(itemStack));
                 level.setBlockEntity(be);
                 player.setItemInHand(interactionHand, Items.BUCKET.getDefaultInstance());
+            }
+            return InteractionResult.SUCCESS;
+        } else if (itemStack.is(Items.BUCKET)) {
+            if (level.getBlockEntity(blockPos) instanceof PaintingBasinBlockEntity be) {
+                if (be.getFluid() == null) {
+                    return InteractionResult.PASS;
+                } else {
+                    player.setItemInHand(interactionHand, Objects.requireNonNull(FlatColoredBlocksUtil.getBucketStackFromFluid(be.getFluid())));
+                    be.setFluid((Fluid) null);
+                }
             }
             return InteractionResult.SUCCESS;
         }

@@ -8,6 +8,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
+import org.jspecify.annotations.Nullable;
 
 public class FlatColoredBlocksUtil {
     public static final Color WHITE = new Color();
@@ -52,6 +53,7 @@ public class FlatColoredBlocksUtil {
         return new Color(rgb);
     }
 
+    @Nullable
     public static Fluid getFluidFromBucket(ItemStack itemStack) {
         if (itemStack.is(Items.WATER_BUCKET)) {
             return Fluids.WATER;
@@ -62,8 +64,29 @@ public class FlatColoredBlocksUtil {
         }
     }
 
+    @Nullable
     public static Fluid getFluidFromBucket(ItemLike itemLike) {
         return getFluidFromBucket(new ItemStack(itemLike));
+    }
+
+    @Nullable
+    public static ItemLike getBucketFromFluid(Fluid fluid) {
+        if (fluid == Fluids.WATER) {
+            return Items.WATER_BUCKET;
+        } else if (fluid == Fluids.LAVA) {
+            return Items.LAVA_BUCKET;
+        } else {
+            return null;
+        }
+    }
+
+    @Nullable
+    public static ItemStack getBucketStackFromFluid(Fluid fluid) {
+        ItemLike bucket = getBucketFromFluid(fluid);
+        if (bucket == null) {
+            return null;
+        }
+        return bucket.asItem().getDefaultInstance();
     }
 
     public record Color(int red, int green, int blue) {
