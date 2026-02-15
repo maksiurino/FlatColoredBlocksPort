@@ -93,10 +93,10 @@ public class FlatColoredBlocksCreativeModeTabRegistry {
                 TOOLS,
                 FabricItemGroup.builder()
                         .title(Component.translatable("itemGroup.flatcoloredblocks.tools"))
-                        .icon(() -> new ItemStack(Items.STONE))
+                        .icon(() -> new ItemStack(FlatColoredBlockRegistry.PAINT_MIXER))
                         .displayItems((params, output) -> {
-                            output.accept(Items.STONE);
-                            output.accept(Items.COAL);
+                            output.accept(FlatColoredBlockRegistry.PAINT_MIXER);
+                            output.accept(FlatColoredBlockRegistry.PAINT_BASIN);
                         })
                         .build()
         );

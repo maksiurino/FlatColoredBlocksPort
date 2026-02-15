@@ -2,7 +2,7 @@ package mod.flatcoloredblocks.fabric.registry.block;
 
 import mod.flatcoloredblocks.fabric.FlatColoredBlocks;
 import mod.flatcoloredblocks.fabric.registry.block.type.*;
-import mod.flatcoloredblocks.fabric.registry.block.type.util.enums.ColoredBlockType;
+import mod.flatcoloredblocks.fabric.registry.block.type.util.enums.*;
 import mod.flatcoloredblocks.fabric.registry.item.type.ColoredBlockItem;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -40,6 +40,20 @@ public class FlatColoredBlockRegistry {
             "colored_wool_carpet",
             props -> new ColoredGlassBlock(props, ColoredBlockType.CARPET),
             BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_CARPET).isViewBlocking(Blocks::never),
+            true
+    );
+
+
+    public static final Block PAINT_BASIN = register(
+            "paint_basin",
+            PaintingBasinBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion(),
+            true
+    );
+    public static final Block PAINT_MIXER = register(
+            "paint_mixer",
+            PaintingMixerBlock::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion(),
             true
     );
 

@@ -23,6 +23,7 @@ public class FlatColoredBlocksClient implements ClientModInitializer {
     private void initializeBlocks() {
         // Glass transparency
         BlockRenderLayerMap.putBlock(FlatColoredBlockRegistry.COLORED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        BlockRenderLayerMap.putBlocks(ChunkSectionLayer.CUTOUT, FlatColoredBlockRegistry.PAINT_BASIN, FlatColoredBlockRegistry.PAINT_MIXER);
         // Colored blocks coloring
         ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> {
             if ((blockAndTintGetter != null) && (blockPos != null)) {
