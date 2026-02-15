@@ -4,7 +4,6 @@ import com.mojang.serialization.MapCodec;
 import mod.flatcoloredblocks.fabric.registry.block.entity.type.PaintingBasinBlockEntity;
 import mod.flatcoloredblocks.fabric.registry.util.FlatColoredBlocksUtil;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -66,7 +65,7 @@ public class PaintingBasinBlock extends Block implements EntityBlock {
     }
 
     @Override
-    protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+    protected @NonNull InteractionResult useItemOn(ItemStack itemStack, @NonNull BlockState blockState, @NonNull Level level, @NonNull BlockPos blockPos, @NonNull Player player, @NonNull InteractionHand interactionHand, @NonNull BlockHitResult blockHitResult) {
         if (itemStack.is(Items.WATER_BUCKET) || itemStack.is(Items.LAVA_BUCKET)) {
             if (level.getBlockEntity(blockPos) instanceof PaintingBasinBlockEntity be) {
                 be.setFluid(FlatColoredBlocksUtil.getFluidFromBucket(itemStack));
