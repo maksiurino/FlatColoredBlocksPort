@@ -81,6 +81,7 @@ public class PaintingBasinBlock extends Block implements EntityBlock {
                 } else {
                     player.setItemInHand(interactionHand, Objects.requireNonNull(FlatColoredBlocksUtil.getBucketStackFromFluid(be.getFluid())));
                     be.setFluid((Fluid) null);
+                    level.setBlockEntity(be);
                 }
             }
             return InteractionResult.SUCCESS;
