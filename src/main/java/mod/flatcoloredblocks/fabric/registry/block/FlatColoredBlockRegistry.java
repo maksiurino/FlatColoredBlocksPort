@@ -21,40 +21,34 @@ public class FlatColoredBlockRegistry {
     public static final Block COLORED_CONCRETE = registerColorable(
             "colored_concrete",
             props -> new ColoredGlassBlock(props, ColoredBlockType.CONCRETE),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_CONCRETE).isViewBlocking(Blocks::never),
-            true
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_CONCRETE).isViewBlocking(Blocks::never)
     );
     public static final Block COLORED_GLASS = registerColorable(
             "colored_glass",
             props -> new ColoredGlassBlock(props, ColoredBlockType.GLASS),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS),
-            true
+            BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
     );
     public static final Block COLORED_WOOL = registerColorable(
             "colored_wool",
             props -> new ColoredGlassBlock(props, ColoredBlockType.WOOL),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL).isViewBlocking(Blocks::never),
-            true
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL).isViewBlocking(Blocks::never)
     );
     public static final Block COLORED_CARPET = registerColorable(
             "colored_wool_carpet",
             props -> new ColoredGlassBlock(props, ColoredBlockType.CARPET),
-            BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_CARPET).isViewBlocking(Blocks::never),
-            true
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_CARPET).isViewBlocking(Blocks::never)
     );
 
 
     public static final Block PAINT_BASIN = register(
             "paint_basin",
             PaintingBasinBlock::new,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion(),
-            true
+            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()
     );
     public static final Block PAINT_MIXER = register(
             "paint_mixer",
             PaintingMixerBlock::new,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion(),
-            true
+            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noOcclusion()
     );
 
     private static Block registerColorable(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings, boolean shouldRegisterItem) {
@@ -70,6 +64,10 @@ public class FlatColoredBlockRegistry {
         return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
     }
 
+    private static Block registerColorable(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings) {
+        return registerColorable(name, blockFactory, settings, true);
+    }
+
     private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings, boolean shouldRegisterItem) {
         ResourceKey<Block> blockKey = keyOfBlock(name);
         Block block = blockFactory.apply(settings.setId(blockKey));
@@ -81,6 +79,10 @@ public class FlatColoredBlockRegistry {
         }
 
         return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
+    }
+
+    private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings) {
+        return register(name, blockFactory, settings, true);
     }
 
     private static ResourceKey<Block> keyOfBlock(String name) {
