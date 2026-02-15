@@ -45,7 +45,7 @@ public class PaintingMixerBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    protected VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    protected @NonNull VoxelShape getShape(@NonNull BlockState blockState, @NonNull BlockGetter blockGetter, @NonNull BlockPos blockPos, @NonNull CollisionContext collisionContext) {
         return SHAPE;
     }
 

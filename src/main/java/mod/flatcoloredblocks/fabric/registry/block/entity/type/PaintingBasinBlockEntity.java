@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
 
 public class PaintingBasinBlockEntity extends BlockEntity {
     private Fluid fluid;
