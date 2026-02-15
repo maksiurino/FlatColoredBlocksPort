@@ -1,19 +1,32 @@
 package mod.flatcoloredblocks.fabric.registry.block.type;
 
 import com.mojang.serialization.MapCodec;
+import mod.flatcoloredblocks.fabric.registry.block.entity.type.PaintingBasinBlockEntity;
+import mod.flatcoloredblocks.fabric.registry.util.FlatColoredBlocksUtil;
 import net.minecraft.core.BlockPos;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import java.util.stream.Stream;
 
-public class PaintingBasinBlock extends Block {
+public class PaintingBasinBlock extends Block implements EntityBlock {
     public static final MapCodec<PaintingBasinBlock> CODEC = simpleCodec(PaintingBasinBlock::new);
     private static final VoxelShape SHAPE = Stream.of(
             Block.box(0, 4, 0, 16, 15, 2),
@@ -48,5 +61,23 @@ public class PaintingBasinBlock extends Block {
     @NonNull
     public MapCodec<PaintingBasinBlock> codec() {
         return CODEC;
+    }
+
+    @Override
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        if (itemStack.is(Items.WATER_BUCKET) || itemStack.is(Items.LAVA_BUCKET)) {
+            if (level.getBlockEntity(blockPos) instanceof PaintingBasinBlockEntity be) {
+                be.setFluid(FlatColoredBlocksUtil.getFluidFromBucket(itemStack));
+                level.setBlockEntity(be);
+                player.setItemInHand(interactionHand, Items.BUCKET.getDefaultInstance());
+            }
+            return InteractionResult.SUCCESS;
+        }
+        return InteractionResult.PASS;
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new PaintingBasinBlockEntity(blockPos, blockState);
     }
 }

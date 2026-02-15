@@ -4,6 +4,10 @@ import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 
 public class FlatColoredBlocksUtil {
     public static final Color WHITE = new Color();
@@ -46,6 +50,20 @@ public class FlatColoredBlocksUtil {
 
     public static Color colorToRgb(int rgb) {
         return new Color(rgb);
+    }
+
+    public static Fluid getFluidFromBucket(ItemStack itemStack) {
+        if (itemStack.is(Items.WATER_BUCKET)) {
+            return Fluids.WATER;
+        } else if (itemStack.is(Items.LAVA_BUCKET)) {
+            return Fluids.LAVA;
+        } else {
+            return null;
+        }
+    }
+
+    public static Fluid getFluidFromBucket(ItemLike itemLike) {
+        return getFluidFromBucket(new ItemStack(itemLike));
     }
 
     public record Color(int red, int green, int blue) {
