@@ -20,9 +20,6 @@
     "fabric-datagen": [
       "mod.flatcoloredblocks.fabric.client.datagen.FlatColoredBlocksDataGenerator"
     ],
-    "modmenu": [
-      "mod.flatcoloredblocks.fabric.compat.modmenu.FlatColoredBlocksModMenuCompat"
-    ],
     "jade": [
       "mod.flatcoloredblocks.fabric.compat.jade.FlatColoredBlocksJadePlugin"
     ]
