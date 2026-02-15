@@ -3,6 +3,7 @@ package mod.flatcoloredblocks.fabric.registry.block.entity;
 import mod.flatcoloredblocks.fabric.FlatColoredBlocks;
 import mod.flatcoloredblocks.fabric.registry.block.FlatColoredBlockRegistry;
 import mod.flatcoloredblocks.fabric.registry.block.entity.type.ColoredConcreteBlockEntity;
+import mod.flatcoloredblocks.fabric.registry.block.entity.type.PaintingBasinBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,6 +18,10 @@ public class FlatColoredBlocksBlockEntities {
                     FlatColoredBlockRegistry.COLORED_CONCRETE, FlatColoredBlockRegistry.COLORED_GLASS,
                     FlatColoredBlockRegistry.COLORED_WOOL, FlatColoredBlockRegistry.COLORED_CARPET
             );
+
+    public static final BlockEntityType<PaintingBasinBlockEntity> PAINTING_BASIN_BLOCK_ENTITY =
+            register("painting_basin", PaintingBasinBlockEntity::new,
+                    FlatColoredBlockRegistry.PAINT_BASIN);
 
     private static <T extends BlockEntity> BlockEntityType<T> register(
             String name,

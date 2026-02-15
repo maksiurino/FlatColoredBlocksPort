@@ -3,16 +3,13 @@ package mod.flatcoloredblocks.fabric.client;
 import mod.flatcoloredblocks.fabric.FlatColoredBlocks;
 import mod.flatcoloredblocks.fabric.registry.block.FlatColoredBlockRegistry;
 import mod.flatcoloredblocks.fabric.registry.block.entity.FlatColoredBlocksBlockEntities;
-import mod.flatcoloredblocks.fabric.registry.block.entity.renderer.type.ColoredConcreteBlockEntityRenderer;
-import mod.flatcoloredblocks.fabric.registry.block.entity.type.ColoredConcreteBlockEntity;
-import mod.flatcoloredblocks.fabric.registry.util.ColoredBlockTintSource;
-import mod.flatcoloredblocks.fabric.registry.util.FlatColoredBlocksComponents;
-import mod.flatcoloredblocks.fabric.registry.util.FlatColoredBlocksUtil;
+import mod.flatcoloredblocks.fabric.registry.block.entity.renderer.type.*;
+import mod.flatcoloredblocks.fabric.registry.block.entity.type.*;
+import mod.flatcoloredblocks.fabric.registry.util.*;
 import mod.flatcoloredblocks.fabric.registry.util.tags.FlatColoredBlocksItemTags;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.color.item.ItemTintSources;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -39,6 +36,7 @@ public class FlatColoredBlocksClient implements ClientModInitializer {
                 FlatColoredBlockRegistry.COLORED_WOOL, FlatColoredBlockRegistry.COLORED_CARPET);
         // Block Entity Renderer
         BlockEntityRenderers.register(FlatColoredBlocksBlockEntities.COLORED_CONCRETE_BLOCK_ENTITY, ColoredConcreteBlockEntityRenderer::new);
+        BlockEntityRenderers.register(FlatColoredBlocksBlockEntities.PAINTING_BASIN_BLOCK_ENTITY, PaintingBasinBlockEntityRenderer::new);
     }
 
     private void initializeItems() {
