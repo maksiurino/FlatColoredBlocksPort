@@ -43,13 +43,6 @@ public class PaintingBasinBlockEntityRenderer implements BlockEntityRenderer<Pai
     @Override
     public void submit(PaintingBasinBlockEntityRenderState state, @NonNull PoseStack pose, @NonNull SubmitNodeCollector queue, @NonNull CameraRenderState cameraRenderState) {
         if (state.getFluid() != null) {
-            blockRenderDispatcher.renderLiquid(
-                    state.blockPos,
-                    state.level,
-                    null,
-                    state.blockState,
-                    state.getFluid().defaultFluidState()
-            );
         }
     }
 }
