@@ -23,6 +23,8 @@ public class ColoredConcreteBlockEntityRenderer implements BlockEntityRenderer<C
     public void extractRenderState(ColoredConcreteBlockEntity blockEntity, ColoredConcreteBlockEntityRenderState state, float tickProgress, Vec3 cameraPos, ModelFeatureRenderer.@Nullable CrumblingOverlay crumblingOverlay) {
         BlockEntityRenderer.super.extractRenderState(blockEntity, state, tickProgress, cameraPos, crumblingOverlay);
         state.setColor(blockEntity.getColor());
+        state.blockPos = blockEntity.getBlockPos();
+        state.level = blockEntity.getLevel();
     }
 
     @Override
