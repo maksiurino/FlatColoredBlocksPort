@@ -2,6 +2,7 @@ package mod.flatcoloredblocks.fabric.registry.item.group;
 
 import mod.flatcoloredblocks.fabric.FlatColoredBlocks;
 import mod.flatcoloredblocks.fabric.registry.block.FlatColoredBlockRegistry;
+import mod.flatcoloredblocks.fabric.registry.item.FlatColoredBlocksItemRegistry;
 import mod.flatcoloredblocks.fabric.registry.util.FlatColoredBlocksComponents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
@@ -96,6 +97,7 @@ public class FlatColoredBlocksCreativeModeTabRegistry {
                         .displayItems((params, output) -> {
                             output.accept(FlatColoredBlockRegistry.PAINT_MIXER);
                             output.accept(FlatColoredBlockRegistry.PAINT_BASIN);
+                            addRowOfColorsForItemGroup(FlatColoredBlocksItemRegistry.PAINT_BRUSH, output);
                         })
                         .build()
         );

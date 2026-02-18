@@ -1,6 +1,7 @@
 package mod.flatcoloredblocks.fabric;
 
 import mod.flatcoloredblocks.fabric.registry.block.FlatColoredBlockRegistry;
+import mod.flatcoloredblocks.fabric.registry.item.FlatColoredBlocksItemRegistry;
 import mod.flatcoloredblocks.fabric.registry.item.group.FlatColoredBlocksCreativeModeTabRegistry;
 import mod.flatcoloredblocks.fabric.registry.util.FlatColoredBlocksComponents;
 import net.fabricmc.api.ModInitializer;
@@ -16,6 +17,7 @@ public class FlatColoredBlocks implements ModInitializer {
     @Override
     public void onInitialize() {
         FlatColoredBlockRegistry.bootstrap();
+        FlatColoredBlocksItemRegistry.bootstrap();
         FlatColoredBlocksComponents.bootstrap();
         FlatColoredBlocksCreativeModeTabRegistry.bootstrap();
     }
