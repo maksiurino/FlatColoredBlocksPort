@@ -26,44 +26,48 @@ public class FlatColoredBlocksCreativeModeTabRegistry {
     );
 
     private static void addRowOfColorsForItemGroup(ItemLike item, CreativeModeTab.Output output) {
-        output.accept(new ItemStack(item));
+        addRowOfColorsForItemGroup(new ItemStack(item), output);
+    }
+
+    private static void addRowOfColorsForItemGroup(ItemStack item, CreativeModeTab.Output output) {
+        output.accept(item.getItem());
         output.accept(Util.make(() -> {
-            ItemStack itemStack = new ItemStack(item);
+            ItemStack itemStack = item.copy();
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, 0xFF0000);
             return itemStack;
         }));
         output.accept(Util.make(() -> {
-            ItemStack itemStack = new ItemStack(item);
+            ItemStack itemStack = item.copy();
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, 0x00FF00);
             return itemStack;
         }));
         output.accept(Util.make(() -> {
-            ItemStack itemStack = new ItemStack(item);
+            ItemStack itemStack = item.copy();
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, 0x0000FF);
             return itemStack;
         }));
         output.accept(Util.make(() -> {
-            ItemStack itemStack = new ItemStack(item);
+            ItemStack itemStack = item.copy();
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, 0xFFFF00);
             return itemStack;
         }));
         output.accept(Util.make(() -> {
-            ItemStack itemStack = new ItemStack(item);
+            ItemStack itemStack = item.copy();
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, 0x00FFFF);
             return itemStack;
         }));
         output.accept(Util.make(() -> {
-            ItemStack itemStack = new ItemStack(item);
+            ItemStack itemStack = item.copy();
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, 0xFF00FF);
             return itemStack;
         }));
         output.accept(Util.make(() -> {
-            ItemStack itemStack = new ItemStack(item);
+            ItemStack itemStack = item.copy();
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, 0xFFFFFF);
             return itemStack;
         }));
         output.accept(Util.make(() -> {
-            ItemStack itemStack = new ItemStack(item);
+            ItemStack itemStack = item.copy();
             itemStack.set(FlatColoredBlocksComponents.COLOR_COMPONENT, 0x000000);
             return itemStack;
         }));
@@ -97,7 +101,12 @@ public class FlatColoredBlocksCreativeModeTabRegistry {
                         .displayItems((params, output) -> {
                             output.accept(FlatColoredBlockRegistry.PAINT_MIXER);
                             output.accept(FlatColoredBlockRegistry.PAINT_BASIN);
-                            addRowOfColorsForItemGroup(FlatColoredBlocksItemRegistry.PAINT_BRUSH, output);
+                            addRowOfColorsForItemGroup(Util.make(() -> {
+                                ItemStack itemStack = new ItemStack(FlatColoredBlocksItemRegistry.PAINT_BRUSH);
+                                itemStack.set(FlatColoredBlocksComponents.AMOUNT, 200);
+                                return itemStack;
+                            }
+                            ), output);
                         })
                         .build()
         );

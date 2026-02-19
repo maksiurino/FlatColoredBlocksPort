@@ -16,4 +16,10 @@ public class FlatColoredBlocksComponents {
             FlatColoredBlocks.id("color"),
             DataComponentType.<Integer>builder().persistent(Codec.INT).build()
     );
+
+    public static final DataComponentType<Integer> AMOUNT = Registry.register(
+            BuiltInRegistries.DATA_COMPONENT_TYPE,
+            FlatColoredBlocks.id("amount"),
+            DataComponentType.<Integer>builder().persistent(Codec.INT).build()
+    );
 }
