@@ -19,16 +19,6 @@ public class FlatColoredBlocksUtil {
     public static final Color GREEN = new Color(0, 255, 0);
     public static final Color BLUE = new Color(0, 0, 255);
 
-    public static Integer rgbToColor(int red, int green, int blue) {
-        Color color = new Color(red, green, blue);
-        return color.getColorAsRgb();
-    }
-
-    public static Vec3i rgbToVector(int red, int green, int blue) {
-        Color color = new Color(red, green, blue);
-        return color.getColorAsVector();
-    }
-
     public static MutableComponent getColorName(ItemStack itemStack) {
         Integer color = Objects.requireNonNullElse(itemStack.get(FlatColoredBlocksComponents.COLOR_COMPONENT), 0xFFFFFF);
         Color mainColor = new Color(color);
@@ -46,10 +36,6 @@ public class FlatColoredBlocksUtil {
             component = Component.translatable("color.flatcoloredblocks.blue");
         }
         return component;
-    }
-
-    public static Color colorToRgb(int rgb) {
-        return new Color(rgb);
     }
 
     @Nullable
