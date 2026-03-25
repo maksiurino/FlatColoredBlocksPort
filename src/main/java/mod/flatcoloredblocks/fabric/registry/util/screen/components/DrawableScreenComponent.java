@@ -6,8 +6,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.util.Mth;
 
-import java.util.List;
-
 public class DrawableScreenComponent {
     private TextureInfo texture;
     private float x;
