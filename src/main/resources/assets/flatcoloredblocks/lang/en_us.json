@@ -1590,5 +1590,7 @@
   "widget.flatcoloredblocks.hue_selector": "Select Hue",
   "widget.flatcoloredblocks.saturation_and_value_selector": "Select Saturation and Value",
   "config.jade.plugin_flatcoloredblocks.colored_blocks": "Colored Blocks colors",
-  "block.flatcoloredblocks.colorer": "Colorer"
+  "block.flatcoloredblocks.colorer": "Colorer",
+
+  "tag.item.flatcoloredblocks.colored_blocks": "Colored Blocks"
 }

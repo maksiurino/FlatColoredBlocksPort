@@ -17,8 +17,9 @@ public class ColorerBlockMenu extends AbstractContainerMenu {
     private final CraftingContainer craftingContainer;
     private final Player player;
 
-    //public boolean colorChanged = false;
-    //public FlatColoredBlocksUtil.Color newColor = FlatColoredBlocksUtil.RED;
+    public final DataSlot colorRed = DataSlot.standalone();
+    public final DataSlot colorGreen = DataSlot.standalone();
+    public final DataSlot colorBlue = DataSlot.standalone();
 
     // Client-side constructor
     public ColorerBlockMenu(final int containerId, final Inventory inventory) {
@@ -44,6 +45,14 @@ public class ColorerBlockMenu extends AbstractContainerMenu {
 
         // Add the player inventory slots.
         this.addStandardInventorySlots(inventory, 8, 84);
+
+        this.addDataSlot(colorRed);
+        this.addDataSlot(colorGreen);
+        this.addDataSlot(colorBlue);
+
+        colorRed.set(255);
+        colorGreen.set(0);
+        colorBlue.set(0);
     }
 
     @Override
@@ -84,21 +93,25 @@ public class ColorerBlockMenu extends AbstractContainerMenu {
         if (container == craftingContainer) {
             if (container.getItem(0).is(FlatColoredBlocksItemTags.COLORED_BLOCKS)) {
                 ItemStack item = container.getItem(0).copy();
-                item.set(FlatColoredBlocksComponents.COLOR_COMPONENT, 0xFF0000);
+                item.set(FlatColoredBlocksComponents.COLOR_COMPONENT,
+                        new FlatColoredBlocksUtil.Color(colorRed.get(), colorGreen.get(), colorBlue.get())
+                                .getColorAsRgb()
+                );
                 resultContainer.setItem(0, item);
             }
         }
-        /*
-        else if (container == this.container) {
+        if (container == this.container) {
             if (container.getItem(0).is(FlatColoredBlocksItemTags.COLORED_BLOCKS)) {
                 ItemStack item = container.getItem(0).copy();
-                Integer itemColor = item.get(FlatColoredBlocksComponents.COLOR_COMPONENT);
-                if (itemColor != null) {
-                    colorChanged = true;
-                    newColor = FlatColoredBlocksUtil.Color.fromARGB(itemColor);
+                Integer intColor = item.get(FlatColoredBlocksComponents.COLOR_COMPONENT);
+                if (intColor != null) {
+                    FlatColoredBlocksUtil.Color color = new FlatColoredBlocksUtil.Color(intColor);
+                    colorRed.  set(color.red());
+                    colorGreen.set(color.green());
+                    colorBlue. set(color.blue());
+                    System.out.println("Setting!");
                 }
             }
         }
-         */
     }
 }
