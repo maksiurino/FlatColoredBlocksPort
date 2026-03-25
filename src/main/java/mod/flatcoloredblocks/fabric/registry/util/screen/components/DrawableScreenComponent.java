@@ -16,10 +16,7 @@ public class DrawableScreenComponent {
     private Pair<Pair<Float, Float>, Pair<Float, Float>> border = Pair.of(Pair.of(0f, 0f), Pair.of(0f, 0f));
 
     public DrawableScreenComponent(TextureInfo texture, float x, float y) {
-        this.texture = texture;
-        this.x = x;
-        this.y = y;
-        this.scale = 1;
+        setTexture(texture).setX(x).setY(y).setScale(1);
     }
 
     public float getX() {
