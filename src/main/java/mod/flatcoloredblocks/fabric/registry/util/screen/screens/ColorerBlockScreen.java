@@ -230,10 +230,6 @@ public class ColorerBlockScreen extends AbstractContainerScreen<ColorerBlockMenu
         }
     }
 
-    public void drawCenteredString(GuiGraphics graphics, Font font, String string, int i, int j, int k, boolean bl) {
-        drawCenteredString(graphics, font, string, i, j, k, true, bl);
-    }
-
     public static void drawOutlinedText(GuiGraphics gfx, Font font, String text, int x, int y, int color, int outlineColor, boolean bl) {
         // Outline (4 directions — fast)
         gfx.drawString(font, text, x - 1, y, outlineColor, bl);
